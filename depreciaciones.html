@@ -1,0 +1,512 @@
+.
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+    <title>::Gestor Financiero</title>
+
+    <!-- style -->
+
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap -->
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- carousel -->
+
+    <link href="css/owl.carousel.css" rel="stylesheet" type="text/css">
+
+    <!-- responsive -->
+
+    <link href="css/responsive.css" rel="stylesheet" type="text/css">
+
+    <!-- font-awesome -->
+
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- font-awesome -->
+
+    <link href="css/animate.min.css" rel="stylesheet" type="text/css">
+
+    <link href="css/popup.css" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body class="module-home" data-spy="scroll" data-target=".navbar">
+    <!-- header -->
+    <header role="header" class="header-top" id="headere-top">
+        <div class="header-fixed-wrapper" role="header-fixed">
+            <div class="container">
+                <!-- hgroup -->
+                <hgroup class="row">
+                    <!-- logo -->
+                    <div class="col-xs-5 col-sm-2 col-md-2 col-lg-2">
+                        <h1>
+                            <a href="#headere-top " title="eddu"><img src="images/logo.png" alt="eddu" title="eddu" /></a>
+                        </h1>
+                    </div>
+                    <!-- logo -->
+                    <!-- nav -->
+
+                    <nav role="navigation" class="col-xs-12 col-sm-10 col-md-10 col-lg-10 navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                                aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#headere-top" title="Home">Inicio</a></li>
+                                <li><a href="#section-one" title="Vencida">L. Recta</a></li>
+                                <li><a href="#section-two" title="Anticipada">Sum Digitos</a></li>
+                                <li><a href="#section-three" title="Diferida">Doble Fraccion</a></li>
+                                <li><a href="#section-four" title="mas">Mas</a></li>
+                            </ul>
+
+                        </div>
+
+                    </nav>
+
+                    <!-- nav -->
+
+                </hgroup>
+
+                <!-- hgroup -->
+
+            </div>
+
+        </div>
+
+        <!-- banner Text -->
+
+        <section class="text-center">
+
+            <h2>Gestor financiero</h2>
+            <p>Aprende las formulas principales, que utilizan para calculos financieros</p>
+
+        </section>
+
+        <!-- banner Text -->
+        <!-- banner image -->
+
+        <figure>
+
+            <div class="parallax-window item tp-banner-container" data-parallax="scroll" data-image-src="images/logoes/logoSIStemas.png"></div>
+
+        </figure>
+
+        <!-- banner image -->
+
+    </header>
+
+    <!-- header -->
+
+    <!-- main -->
+
+    <main role="main" id=" main-wrapper">
+
+        <!-- section-one -->
+
+        <section class="section-one text-center" id="section-one">
+
+            <div class="container">
+
+                <header role="title-page">
+
+                    <h4>Linea Recta</h4>
+
+                </header>
+
+                <article>
+
+                    <p>
+                        La depreciación en línea recta es uno de los métodos de depreciación más utilizados, principalmente por su sencillez, y por<br>                        la
+                        facilidad de implementación, pues sólo requiere de una simple operación aritmética.<br> En este método
+                        de depreciación se supone que el activo sufre un desgaste constante con el paso del tiempo, lo que<br>                        no
+                        siempre se ajusta a la realidad, toda vez que hay activos que en la medida en que se utilizan,<br>                        el
+                        nivel de desgaste se incrementa, es creciente.
+                    </p>
+                    <figure></figure>
+
+
+                </article>
+
+
+
+                <!-- formulario anualidad vencida  -->
+
+                <form class="formInteres" action="#">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="monto">Monto:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="monto" placeholder="Ingrese el monto" name="monto">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="interes">Interes:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="interes" placeholder="Ingrese el interes anual" name="interes">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="pwd">Tiempo:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="tiempo" placeholder="Tiempo del credito" name="interes">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="dropdown">
+                            <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Factor de
+                                tiempo
+                                <select class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" id="facTiempoCom">
+                                    <option value="1">Anual</option>
+                                    <option value="2">Semestral</option>
+                                    <option value="3">Trimestral</option>
+                                    <option value="4">Bimensual</option>
+                                    <option value="5">Mensual</option>
+                                </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success">Calcular</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- formulario anualidad vencida -->
+
+
+
+            </div>
+
+        </section>
+
+        <!-- section-one -->
+
+        <!-- section-two -->
+
+        <section class="section-two text-center" id="section-two">
+
+            <div class="container">
+
+                <header role="title-page">
+
+                    <h4>Suma de los digitos de los años</h4>
+
+                </header>
+
+                <article>
+
+                    <p>
+
+                        Otro de los métodos de cálculo de los cargos periódicos por depreciación y uno de los más utilizados
+                        <br> es el Método de Suma de Dígitos que es un método de depreciación acelerado,<br> en el cual la
+                        depreciación es mayor en los primeros años de vida del activo fijo, disminuyendo en los años subsecuentes.
+                    </p>
+
+
+                </article>
+
+
+                <!-- formulario Anualidad Anticipada -->
+
+                <form class="formInteres" action="#">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="email">Monto:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="montoCom" placeholder="Ingrese el monto" name="monto">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="pwd">Interes:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="interesCom" placeholder="Ingrese el interes anual" name="interes">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="pwd">Tiempo:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="tiempoCom" placeholder="Tiempo del credito" name="interes">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="dropdown">
+                            <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Factor de
+                                tiempo
+                                <select class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" id="facTiempoCom">
+                                    <option value="1">Anual</option>
+                                    <option value="2">Semestral</option>
+                                    <option value="3">Trimestral</option>
+                                    <option value="4">Bimensual</option>
+                                    <option value="5">Mensual</option>
+                                </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success">Calcular</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- formulario Anualidad Anticipada -->
+
+
+
+            </div>
+
+        </section>
+
+        <!-- section-two -->
+
+
+
+        <!-- section-three -->
+
+        <section class="section-three text-center" id="section-three">
+
+            <div class="container">
+
+                <header role="title-page">
+
+                    <h4>doble fraccion decreciente</h4>
+
+                </header>
+
+                <article>
+
+                    <p>
+
+                        Utiliza una tasa de depreciación que viene a ser el doble de la que se aplica en línea recta.
+                        <br> A diferencia de lo que ocurre con otros métodos, el valor de desecho se pasa por alto al calcular la base de la depreciación.<br>
+                        La tasa de doble cuota se multiplica por el valor en libros que tiene el activo al comenzar cada periodo.<br>
+                        Además, el valor en libros se reduce cada periodo en cantidad igual al cargo por depreciación.<br>
+                        De manera que cada año la doble tasa constante se aplica a un valor en libros sucesivamente más bajo
+
+                    </p>
+
+
+                </article>
+
+
+                <!-- formulario Interes simple  -->
+
+                <form class="formInteres" action="#">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="email">Monto:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="montoVP" placeholder="Ingrese el monto" name="monto">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="pwd">Interes:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="interesVP" placeholder="Ingrese el interes anual" name="interes">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="pwd">Tiempo:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="tiempoVP" placeholder="Tiempo del credito" name="interes">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="dropdown">
+                            <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Factor de
+                                tiempo
+                                <select class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" id="facTiempoCom">
+                                    <option value="1">Anual</option>
+                                    <option value="2">Semestral</option>
+                                    <option value="3">Trimestral</option>
+                                    <option value="4">Bimensual</option>
+                                    <option value="5">Mensual</option>
+                                </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success">Calcular</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- formulario Interes simple -->
+
+
+
+            </div>
+
+        </section>
+        <!-- section-three -->
+
+
+        <!-- section-four -->
+
+        <section id="section-four">
+            <div class="team-pan row">
+
+                <section class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">
+
+                    <figure><img src="images/saltos/intereses.png" alt="Anualidades" class="center" /></figure>
+
+                    <header>
+                        <a href="/index.html">
+
+                            <h5>Intereses</h5>
+                        </a>
+                    </header>
+
+                </section>
+
+                <section class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">
+
+                    <figure><img src="images/saltos/anualidades.png" alt="Depreciacion" class="center" /></figure>
+
+                    <header>
+                        <a href="/anualidades.html">
+                            <h5>Anualidades</h5>
+                        </a>
+                    </header>
+
+                </section>
+
+            </div>
+
+        </section>
+
+
+        <!-- section-six -->
+
+
+
+        <!-- footer -->
+
+        <footer role="footer" class="footer text-center">
+
+            <div class="container">
+
+                <!-- socil-icons -->
+
+                <section role="socil-icons" class="socil-icons">
+
+                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+
+                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+
+                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+
+                    <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+
+
+
+                </section>
+
+                <!-- socil-icons -->
+
+                <!-- nav -->
+
+                <nav role="footer-nav">
+
+                    <a href="#">Terms of Use </a>
+
+                    <a href="#">Privacy Policy</a>
+
+                </nav>
+
+                <!-- nav -->
+
+                <p class="copy">&copy; 2018. All rights reserved.
+                    <br>
+                    <i class="fa fa-angellist"></i> by <a href="#">edduCode</a></p>
+
+            </div>
+
+        </footer>
+
+        <!-- footer -->
+
+
+
+    </main>
+
+    <!-- main -->
+
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+
+
+
+    <script src="js/parallax.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $('.parallax-window').parallax({});
+
+    </script>
+
+    <script src="js/main.js" type="text/javascript"></script>
+
+    <script src="js/owl.carousel.js" type="text/javascript"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+    <script src="js/maps.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="js/jquery.mb.YTPlayer.js"></script>
+
+    <script type="text/javascript" src="js/video.js"></script>
+
+    <script src="js/custom.js" type="text/javascript"></script>
+
+    <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
+
+    <script src="js/jquery.contact.js" type="text/javascript"></script>
+
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+    <script src="js/html5shiv.min.js" type="text/javascript"></script>
+
+
+
+</body>
+
+</html>
