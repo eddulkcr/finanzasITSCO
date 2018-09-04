@@ -1,688 +1,169 @@
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <title>Untitled</title>
+        <script>
 
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-
-    <title>::Gestor Financiero</title>
-
-    <!-- style -->
-
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-
-    <!-- Bootstrap -->
-
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
-    <!-- carousel -->
-
-    <link href="css/owl.carousel.css" rel="stylesheet" type="text/css">
-
-    <!-- responsive -->
-
-    <link href="css/responsive.css" rel="stylesheet" type="text/css">
-
-    <!-- font-awesome -->
-
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- font-awesome -->
-
-    <link href="css/animate.min.css" rel="stylesheet" type="text/css">
-
-    <link href="css/popup.css" rel="stylesheet" type="text/css">
+            function validar(e, punto) {
+                tecla = (document.all) ? e.keyCode : e.which;
+                if (tecla < 48 || tecla > 57) {
+                    if (punto && (tecla == 46 || tecla == 44)) {
+                        return true;
+                    }
+                    return false
+                }
 
 
-</head>
+            }
 
-<body class="module-home" data-spy="scroll" data-target=".navbar">
-    <!-- header -->
-    <header role="header" class="header-top" id="headere-top">
-        <div class="header-fixed-wrapper" role="header-fixed">
-            <div class="container">
-                <!-- hgroup -->
-                <hgroup class="row">
-                    <!-- logo -->
-                    <div class="col-xs-5 col-sm-2 col-md-2 col-lg-2">
-                        <h1>
-                            <a href="#headere-top " title="eddu"><img src="images/logo.png" alt="eddu" title="eddu" /></a>
-                        </h1>
-                    </div>
-                    <!-- logo -->
-                    <!-- nav -->
+            function calcula() {
 
-                    <nav role="navigation" class="col-xs-12 col-sm-10 col-md-10 col-lg-10 navbar navbar-default">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                                aria-controls="navbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div id="navbar" class="navbar-collapse collapse">
+                f = document.forms[0];
+                plazo = 12;
+                /*plazo=(f.plazo[0].checked)?f.plazo[0].value:f.plazo[1].value; */
 
-                            <ul class="nav navbar-nav">
-                                <li class="active"><a href="#headere-top" title="Home">Inicio</a></li>
-                                <li><a href="#section-one" title="ISimple">I. Simple</a></li>
-                                <li><a href="#section-two" title="ICompuesto">I. Compuesto</a></li>
-                                <li><a href="#section-three" title="VPresente">V. Presente</a></li>
-                                <li><a href="#section-four" title="Descuentos">Descuentos</a></li>
-                                <li><a href="#section-five" title="Tasas">Tasas</a></li>
-                                <li><a href="#section-six" title="mas">MAS</a></li>
-                            </ul>
+                interesMensual = parseFloat(f.intereses.value) / parseInt(plazo);
 
-                        </div>
+                pagoTotal = parseFloat(f.capital.value) + parseFloat(f.capital.value * f.cuotas.value * interesMensual / 100);
 
-                    </nav>
+                codigo = "<table border=1>";
+                codigo += "<tr>";
+                codigo += "<td>Cuota nº</td>";
+                codigo += "<td>Cuota</td>";
+                codigo += "<td>Amortización</td>";
+                codigo += "<td>Interés</td>";
+                codigo += "<td>Falta por pagar</td>";
 
-                    <!-- nav -->
+                falta = pagoTotal;
 
-                </hgroup>
+                for (a = 1; a <= f.cuotas.value; a++) {
 
-                <!-- hgroup -->
+                    cuota = Math.ceil(pagoTotal / f.cuotas.value * 100) / 100;
+                    amortizacion = parseInt(f.capital.value / f.cuotas.value * 100) / 100;
+                    interes = parseInt(100 * (cuota - amortizacion)) / 100;
+                    falta = parseInt(100 * (falta - cuota)) / 100;
 
-            </div>
+                    codigo += "<tr>";
+                    codigo += "<td>" + a + "</td>";
+                    codigo += "<td>";
+                    if (a == f.cuotas.value) {
+                        cuota = parseInt(100 * (cuota + falta)) / 100;
+                        falta = 0
+                    }
+                    codigo += cuota
+                    codigo += "</td>";
+                    codigo += "<td>";
+                    codigo += amortizacion
+                    codigo += "</td>";
+                    codigo += "<td>";
+                    codigo += interes;
+                    codigo += "</td>";
+                    codigo += "<td>";
+                    codigo += falta;
+                    codigo += "</td>";
+                    codigo += "</tr>";
+                }
+                codigo += "</table>";
+                pepe.innerHTML = codigo;
+            }
+            function desenfoque(esto) {
+                esto.value = esto.value.split(',').join('.');
+                if (isNaN(esto.value) || esto.value < 0) {
+                    esto.value = ''
+                }
+            }
+        </script>
 
+        <style>
+            input.texto{font:normal 10px/10px verdana;
+                        heigth:20px;
+                        border:solid 1px black;
+                        text-align:right;
+                        position:absolute;
+                        left:100px;
+                        padding:2px 2px 2px 2px;
+            }
+            table, td{font:normal 10px/10px verdana;
+                      heigth:20px;
+                      border:solid 1px black;
+                      text-align:right;
+
+                      left:100px;
+                      padding:5px 5px 5px 5px;
+            }
+            input#calcular{font:normal 10px/10px verdana; 
+                           heigth:20px;
+                           border:solid 1px black;
+                           text-align:center;
+            }
+
+            form{font:normal 10px/20px verdana;}
+        </style>
+    </head>
+
+    <body>
+        <div id="tablero">
+            <form action="javascript:calcula(this.form)">
+                <strong>Capital:</strong>
+                <input
+                    class="texto"
+                    type="text"
+                    name="capital"
+                    value="0"
+                    size="10"
+                    maxlength="10"
+                    onkeypress="return validar(event, true)"
+                    onBlur="desenfoque(this)"
+                    onFocus="if (this.value == 0) {
+            this.value = ''
+        }"><br>
+
+                <strong>Interés:</strong>
+                <select name="intereses" id="intereses">
+                    <option value="11.02">VIVIENDA</option>
+                    <option value="16.08">CONSUMO</option>
+                    <option value="25.59">MICRO MINORSTA</option>
+                    <option value="24.36">MICRO AC. SIMPLE</option>
+                    <option value="23.14">MICRO AC. AMPLIADA</option>
+                </select>%<br>
+
+                <!--<input  
+                type="radio"  
+                name="plazo"  
+                value="12"  
+                checked>Anual<br> 
+                
+                <input  
+                type="radio"  
+                name="plazo"  
+                value="1" 
+                >Mensual<br> -->
+                <strong>Nº de cuotas:</strong>
+                <input
+                    class="texto"
+                    onkeypress="return validar(event)"
+                    type="text"
+                    name="cuotas"
+                    value="0"
+                    size="3"
+                    maxlength="3"
+                    onBlur="desenfoque(this)"
+                    onFocus="if (this.value == 0) {
+            this.value = ''}"><br>
+
+
+                <input type="submit" name="calcular" id="calcular" value="Calcular">
+            </form>
         </div>
+        <div id="pepe"></div>
 
-        <!-- banner Text -->
-
-        <section class="text-center">
-
-            <h2>Gestor financiero</h2>
-            <p>Aprende las formulas principales, que utilizan para calculos financieros</p>
-
-        </section>
-
-        <!-- banner Text -->
-        <!-- banner image -->
-
-        <figure>
-
-            <div class="parallax-window item tp-banner-container" data-parallax="scroll" data-image-src="images/logoes/logoSIStemas.png"></div>
-
-        </figure>
-
-        <!-- banner image -->
-
-    </header>
-
-    <!-- header -->
-
-    <!-- main -->
-
-    <main role="main" id=" main-wrapper">
-
-        <!-- section-one -->
-
-        <section class="section-one text-center" id="section-one">
-
-            <div class="container">
-
-                <header role="title-page">
-
-                    <h4>Interes simple</h4>
-
-                </header>
-
-                <article>
-
-                    <p>
-                        El interés simple se refiere a los intereses que produce un capital inicial en un período de tiempo,
-                        <br> el cual no se acumula al capital para producir los intereses del siguiente período;
-                        <br> concluyéndose que el interés simple generado o pagado por el capital invertido o prestado<br>                        será
-                        igual en todos los períodos.
-                    </p>
-
-
-                </article>
-
-
-
-                <!-- formulario Interes simple  -->
-
-                <form class="formInteres col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0" action="#">
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="monto">Monto:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="monto" placeholder="Ingrese el monto" name="monto">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="interes">Interes:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="interes" placeholder="Ingrese el interes anual" name="interes">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="pwd">Tiempo:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="tiempo" placeholder="Tiempo del credito" name="interes">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Factor de
-                                tiempo
-                                <select class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" id="facTiempo">
-                                    <option value="1">Anual</option>
-                                    <option value="2">Semestral</option>
-                                    <option value="3">Trimestral</option>
-                                    <option value="4">Bimensual</option>
-                                    <option value="5">Mensual</option>
-                                </select>
-                            </button>
-                        </div>
-
-                    </div>
-                    <div class="resInteres col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0" id="resultadoInteres">
-                        <label id="resultadoInteres">Resultado</label>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="button" class="btn btn-success" onclick="interesSimple()">Calcular</button>
-                        </div>
-                    </div>
-                </form>
-
-                <!-- formulario Interes simple -->
-
-
-
-            </div>
-
-        </section>
-
-        <!-- section-one -->
-
-        <!-- section-two -->
-
-        <section class="section-two text-center" id="section-two">
-
-            <div class="container">
-
-                <header role="title-page">
-
-                    <h4>Interes compuesto</h4>
-
-                </header>
-
-                <article>
-
-                    <p>
-                        Es cuando los intereses se añaden a la cantidad inicialmente prestada (al principal),
-                        <br> y se generan intereses sobre el principal más esos mismos intereses.
-                        <br> En definitiva, el interés compuesto es cuando los intereses generan a su vez más intereses.
-                        <br> La fórmula para su cálculo es:
-                        <div class="parallax-window item tp-banner-container" data-parallax="scroll" data-image-src="images/logoes/logoSIStemas.png"></div>
-
-                    </p>
-
-
-                </article>
-
-
-                <!-- formulario Interes compuesto  -->
-
-                <form class="formInteres" action="#">
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="montoCom">Monto:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="montoCom" placeholder="Ingrese el monto" name="monto">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="interesCom">Interes:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="interesCom" placeholder="Ingrese el interes anual" name="interes">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="tiempoCom">Tiempo:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="tiempoCom" placeholder="Tiempo del credito en meses" name="interes">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Factor de
-                                tiempo
-                                <select class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" id="facTiempoCom">
-                                    <option value="1">Anual</option>
-                                    <option value="2">Semestral</option>
-                                    <option value="3">Trimestral</option>
-                                    <option value="4">Bimensual</option>
-                                    <option value="5">Mensual</option>
-                                </select>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="button" class="btn btn-success" onclick="interesCompuesto()">Calcular</button>
-                        </div>
-                    </div>
-                </form>
-
-                <!-- formulario Interes compuesto -->
-
-
-
-            </div>
-
-        </section>
-
-        <!-- section-two -->
-
-
-
-        <!-- section-three -->
-
-        <section class="section-three text-center" id="section-three">
-
-            <div class="container">
-
-                <header role="title-page">
-
-                    <h4>valor presente</h4>
-
-                </header>
-
-                <article>
-
-                    <p>
-                        El valor presente busca reflejar que siempre es mejor tener un monto de dinero hoy que recibirlo en el futuro.<br>                        En
-                        efecto, si contamos con el dinero hoy podemos hacer algo para que este sea productivo,<br> como por
-                        ejemplo invertirlo en una empresa,<br> comprar acciones o dejarlo en el banco que nos pague intereses,
-                        entre otras opciones.<br> Además, incluso si no contamos con un plan determinado para invertir el
-                        dinero simplemente podemos<br> gastarlo para satisfacer nuestros gustos y no tenemos que esperar
-                        para recibir el dinero en el futuro.
-                    </p>
-
-
-                </article>
-
-
-                <!-- formulario valor presente  -->
-
-                <form class="formInteres" action="#">
-                    <div class="form-group">
-                        <label class="control-label col-sm-2">Monto:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="montoVp" placeholder="Ingrese el monto" name="monto">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2">Interes:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="interesVp" placeholder="Ingrese el interes anual" name="interes">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2">Tiempo:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="tiempoVp" placeholder="Tiempo del credito" name="tiempo">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Factor de
-                                tiempo
-                                <select class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" id="facTiempoVp">
-                                    <option value="1">Anual</option>
-                                    <option value="2">Semestral</option>
-                                    <option value="3">Trimestral</option>
-                                    <option value="4">Bimensual</option>
-                                    <option value="5">Mensual</option>
-                                </select>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="button" class="btn btn-success" onclick="valorPresente()">Calcular</button>
-                        </div>
-                    </div>
-                </form>
-
-                <!-- formulario valor presente -->
-
-
-
-            </div>
-
-        </section>
-        <!-- section-three -->
-
-
-
-        <!-- section-four -->
-        <section class="section-four text-center" id="section-four">
-
-            <div class="container">
-
-                <header role="title-page">
-
-                    <h4>Descuentos</h4>
-
-                </header>
-
-                <article>
-
-                    <p>
-                        En el ámbito de la economía financiera, descuento es una operación que se lleva a cabo en instituciones bancarias en las<br>                        que
-                        éstas adquieren pagarés o letras de cambio de cuyo valor nominal se descuenta el equivalente<br>                        a
-                        los intereses que generaría el papel entre su fecha de emisión y la fecha de vencimiento.
-                        <br> El descuento legal o racional.<br> En el descuento racional, el descuento se calcula aplicando
-                        el tipo de interés y las leyes del interés simple,<br> mientras que en el comercial, el descuento
-                        se calcula sobre el valor nominal del documento.
-
-                    </p>
-
-
-                </article>
-
-
-                <!-- formulario Descuentos  -->
-
-                <form class="formInteres" action="#">
-                    <div class="form-group">
-                        <label class="control-label col-sm-2">Monto:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="montoD" placeholder="Ingrese el monto" name="monto">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2">Interes:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="interesD" placeholder="Ingrese el interes anual" name="interes">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2">Tiempo:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="tiempoD" placeholder="Tiempo del credito" name="tiempo">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Factor de
-                                tiempo
-                                <select class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" id="facTiempoD">
-                                    <option value="1">Anual</option>
-                                    <option value="2">Semestral</option>
-                                    <option value="3">Trimestral</option>
-                                    <option value="4">Bimensual</option>
-                                    <option value="5">Mensual</option>
-                                </select>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="button" class="btn btn-success" onclick="interesSimple()">Descuento Comercial</button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="button" class="btn btn-success" onclick="descuentoRacional()">Descuento Racional</button>
-                        </div>
-                    </div>
-                </form>
-
-                <!-- formulario Descuentos  -->
-
-
-
-            </div>
-
-        </section>
-        <!-- section-four -->
-
-
-
-        <!-- section-five -->
-        <section class="section-five text-center" id="section-five">
-
-            <div class="container">
-
-                <header role="title-page">
-
-                    <h4>Tasas</h4>
-
-                </header>
-
-                <article>
-
-                    <p>
-                        La tasa efectiva es una de las representaciones más usadas por los bancos y entidades financieras<br>
-                        a la hora de presentar los rendimientos o el costo de un instrumento financiero durante un periodo de tiempo especifico.<br>
-                        La tasa efectiva nos da el porcentaje de interés total que se genera o que se aplica sobre una cantidad<br>
-                        de dinero durante un periodo de tiempo determinado.
-                    </p>
-
-
-                </article>
-
-
-                <!-- formulario Tasas  -->
-
-                <form class="formInteres" action="#">
-                    <div class="form-group">
-                        <label class="control-label col-sm-2">Monto:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="montoD" placeholder="Ingrese el monto" name="monto">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2">Interes:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="interesD" placeholder="Ingrese el interes anual" name="interes">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2">Tiempo:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="tiempoD" placeholder="Tiempo del credito" name="tiempo">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Factor de
-                                tiempo
-                                <select class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" id="facTiempoD">
-                                    <option value="1">Anual</option>
-                                    <option value="2">Semestral</option>
-                                    <option value="3">Trimestral</option>
-                                    <option value="4">Bimensual</option>
-                                    <option value="5">Mensual</option>
-                                </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="button" class="btn btn-success" onclick="descuentoRacional()">Calcular</button>
-                        </div>
-                    </div>
-                </form>
-
-                <!-- formulario Tasas  -->
-
-
-
-            </div>
-
-        </section>
-        <!-- section-five -->
-
-
-
-        <!-- section-six -->
-
-        <section class="section-six" id="section-six">
-
-            <div class="team-pan row">
-
-
-
-                <section class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">
-
-                    <figure><img src="images/saltos/anualidades.png" alt="Anualidades" class="center" /></figure>
-
-                    <header>
-                        <a href="/anualidades.html">
-                            <h5>Anualidades</h5>
-                        </a>
-
-
-                    </header>
-
-                </section>
-
-                <section class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">
-
-                    <figure><img src="images/saltos/depreciacion.png" alt="Depreciacion" class="center" /></figure>
-
-                    <header>
-                        <a href="/depreciaciones.html">
-                            <h5>Depreciaciones</h5>
-                        </a>
-                    </header>
-
-                </section>
-
-
-
-            </div>
-
-        </section>
-
-
-        <!-- section-six -->
-
-
-
-        <!-- footer -->
-
-        <footer role="footer" class="footer text-center">
-
-            <div class="container">
-
-                <!-- socil-icons -->
-
-                <section role="socil-icons" class="socil-icons">
-
-                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-
-                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-
-                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-
-                    <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-
-
-
-                </section>
-
-                <!-- socil-icons -->
-
-                <!-- nav -->
-
-                <nav role="footer-nav">
-
-                    <a href="#">Terms of Use </a>
-
-                    <a href="#">Privacy Policy</a>
-
-                </nav>
-
-                <!-- nav -->
-
-                <p class="copy">&copy; 2018. All rights reserved.
-                    <br>
-                    <i class="fa fa-angellist"></i> by <a href="#">edduCode</a></p>
-
-            </div>
-
-        </footer>
-
-        <!-- footer -->
-
-
-
-    </main>
-
-    <!-- main -->
-
-
-
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
-    <script src="js/jquery.min.js" type="text/javascript"></script>
-
-
-
-    <script src="js/parallax.min.js" type="text/javascript"></script>
-
-    <script type="text/javascript">
-
-        $('.parallax-window').parallax({});
-
-    </script>
-
-    <script src="js/main.js" type="text/javascript"></script>
-
-    <script src="js/intereses.js" type="text/javascript"></script>
-
-    <script src="js/owl.carousel.js" type="text/javascript"></script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-
-    <script src="js/maps.js" type="text/javascript"></script>
-
-    <script type="text/javascript" src="js/jquery.mb.YTPlayer.js"></script>
-
-    <script type="text/javascript" src="js/video.js"></script>
-
-    <script src="js/custom.js" type="text/javascript"></script>
-
-    <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
-
-    <script src="js/jquery.contact.js" type="text/javascript"></script>
-
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
-
-    <script src="js/html5shiv.min.js" type="text/javascript"></script>
-
-
-
-</body>
-
+    </body>
 </html>
